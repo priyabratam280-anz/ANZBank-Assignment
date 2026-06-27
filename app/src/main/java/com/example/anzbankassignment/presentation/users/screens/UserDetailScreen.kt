@@ -19,8 +19,6 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import coil.compose.rememberAsyncImagePainter
 import com.example.anzbankassignment.presentation.users.viewmodel.UserDetailViewModel
-import kotlin.text.append
-
 @Composable
 fun UserDetailScreen(
     userId: String,
