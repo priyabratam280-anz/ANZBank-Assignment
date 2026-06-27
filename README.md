@@ -36,9 +36,7 @@ It showcases:
 
 - [ ] Testing JUnit, Mockito, Coroutines Test
 
-3 - Project Structure
-
-com.example.anzassigment
+3 - Project Structure - com.example.anzbankassignment
 
 ├─ MainApplication.kt -- Hilt Application class
 
