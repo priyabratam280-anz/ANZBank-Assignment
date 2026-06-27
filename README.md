@@ -34,7 +34,7 @@ It showcases:
 
 - [ ] Theme Material3 (Theme.kt , Color.kt, Type.kt)
 
-- [ ] Testing JUnit, Mockito, Coroutines Test
+- [ ] Testing JUnit, Mockito, Coroutines Test , Espresso Test
 
 3 - Project Structure - com.example.anzbankassignment
 
