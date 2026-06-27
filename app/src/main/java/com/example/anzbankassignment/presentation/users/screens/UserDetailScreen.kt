@@ -41,7 +41,9 @@ fun UserDetailScreen(
 fun UserDetailContent(state: UserDetailUiState) {
     when {
         state.isLoading -> Box(
-            modifier = Modifier.fillMaxSize().testTag("LoadingIndicator"),
+            modifier = Modifier
+                .fillMaxSize()
+                .testTag("LoadingIndicator"),
             contentAlignment = Alignment.Center
         ) {
             CircularProgressIndicator()
@@ -83,14 +85,18 @@ fun UserDetailContent(state: UserDetailUiState) {
         }
 
         state.error != null -> Box(
-            modifier = Modifier.fillMaxSize().testTag("ErrorBox"),
+            modifier = Modifier
+                .fillMaxSize()
+                .testTag("ErrorBox"),
             contentAlignment = Alignment.Center
         ) {
             Text("Error: ${state.error}")
         }
 
         else -> Box(
-            modifier = Modifier.fillMaxSize().testTag("EmptyBox"),
+            modifier = Modifier
+                .fillMaxSize()
+                .testTag("EmptyBox"),
             contentAlignment = Alignment.Center
         ) {
             Text("User not found")
@@ -107,9 +113,9 @@ fun UserDetailRow(text: String, value: String?) {
             }
             append(value ?: "N/A")
         },
-        textAlign = TextAlign.Center, // Centers text content
+        textAlign = TextAlign.Center,
         modifier = Modifier
-            .fillMaxWidth() // Required for TextAlign.Center to work
+            .fillMaxWidth()
             .padding(vertical = 2.dp)
             .testTag("UserDetailRow_$text")
     )
