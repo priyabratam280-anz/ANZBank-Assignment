@@ -130,10 +130,11 @@ Dependency Injection
 
  6 - Demo Video - Screen Shot
 
-- [ ] Folder Path - 
+- [ ] Folder Path - https://github.com/priyabratam280-anz/ANZBank-Assignment/tree/master/ScreenShotAndVideo
 
-- [ ] Quick Demo Video -
+- [ ] Quick Demo Video -  Screen_recording_20251018_105931.webm
 
 - [ ] Screen ScreenShots
 
 - [ ] TestCase ScreenShot
+- [ ] Espresso ScreenUiTest video - EspressoScreenUiTest.webm
