@@ -3,6 +3,7 @@ package com.example.anzbankassignment.presentation.users.viewmodel
 import com.example.anzbankassignment.data.User
 import com.example.anzbankassignment.domain.UserRepository
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.StandardTestDispatcher
 import kotlinx.coroutines.test.runTest
 import kotlinx.coroutines.test.setMain
@@ -18,6 +19,7 @@ class UserDetailViewModelTest {
     private lateinit var viewModel: UserDetailViewModel
     private val dispatcher = StandardTestDispatcher()
 
+    @OptIn(ExperimentalCoroutinesApi::class)
     @Before
     fun setup() {
         Dispatchers.setMain(dispatcher)

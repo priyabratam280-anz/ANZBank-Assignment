@@ -47,7 +47,9 @@ fun UsersScreen(
         }
 
         else -> LazyColumn(
-            modifier = Modifier.fillMaxSize()
+            modifier = Modifier.fillMaxSize(),
+            contentPadding = PaddingValues(22.dp),
+            verticalArrangement = Arrangement.spacedBy(25.dp)
         ) {
             items(state.users) { user ->
                 ListItem(
