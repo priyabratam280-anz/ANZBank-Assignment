@@ -1,5 +1,6 @@
 package com.example.anzbankassignment.data
 
+import com.example.anzbankassignment.data.remote.UserApi
 import com.example.anzbankassignment.domain.UserRepository
 import javax.inject.Inject
 

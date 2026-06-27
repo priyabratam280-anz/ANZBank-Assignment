@@ -1,6 +1,6 @@
 package com.example.anzbankassignment
 
-import com.example.anzbankassignment.data.UserApi
+import com.example.anzbankassignment.data.remote.UserApi
 import com.example.anzbankassignment.data.UserDto
 import com.example.anzbankassignment.data.UserRepositoryImpl
 import kotlinx.coroutines.test.runTest
@@ -26,16 +26,16 @@ class UserRepositoryImplTest {
         val mockResponse = listOf(
             UserDto(
                 id = 1,
-                name = "Era Schmeler",
-                company = "Christiansen - Reinger",
-                username = "Percival.Wyman26",
-                email = "Sean.Ruecker11@gmail.com",
-                address = "7536 Carmel Hollow",
-                zip = "40445-5414",
-                state = "Florida",
-                country = "Nigeria",
-                phone = "(811) 313-7616 x631",
-                photo = "https://json-server.dev/ai-profiles/50.png"
+                name = "Sonia Zulauf",
+                email = "Shaina69@yahoo.com",
+                company = "Cartwright LLC",
+                username = "Gisselle.Corwin88",
+                address = "5270 New Road",
+                zip = "01312-1994",
+                state = "New York",
+                country = "Zimbabwe",
+                phone = "(944) 831-2523",
+                photo = "https://json-server.dev/ai-profiles/77.png"
             )
         )
 
@@ -45,13 +45,13 @@ class UserRepositoryImplTest {
         val users = repository.fetchUsers()
 
         assertEquals(1, users.size)
-        assertEquals("Era Schmeler", users.first().name)
-        assertEquals("Nigeria", users.first().country)
+        assertEquals("Sonia Zulauf", users.first().name)
+        assertEquals("Zimbabwe", users.first().country)
     }
 
     @Test(expected = Exception::class)
     fun `fetchUsers throws exception when API fails`() = runTest {
-        whenever(api.getUsers()).thenThrow(RuntimeException("Network error"))
+        whenever(api.getUsers()).thenThrow(RuntimeException("Network Interruption"))
         repository.fetchUsers()
     }
 }

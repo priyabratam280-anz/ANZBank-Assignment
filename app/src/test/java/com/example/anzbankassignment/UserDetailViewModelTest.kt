@@ -31,16 +31,16 @@ class UserDetailViewModelTest {
     fun `loadUserDetail updates uiState with correct user`() = runTest {
         val mockUser = User(
             id = "1",
-            name = "Era Schmeler",
-            email = "Sean.Ruecker11@gmail.com",
-            company = "Christiansen - Reinger",
-            username = "Percival.Wyman26",
-            address = "7536 Carmel Hollow",
-            zip = "40445-5414",
-            state = "Florida",
-            country = "Nigeria",
-            phone = "(811) 313-7616 x631",
-            photo = "https://json-server.dev/ai-profiles/50.png"
+            name = "Sonia Zulauf",
+            email = "Shaina69@yahoo.com",
+            company = "Cartwright LLC",
+            username = "Gisselle.Corwin88",
+            address = "5270 New Road",
+            zip = "01312-1994",
+            state = "New York",
+            country = "Zimbabwe",
+            phone = "(944) 831-2523",
+            photo = "https://json-server.dev/ai-profiles/77.png"
         )
 
         whenever(repository.getUserById("1")).thenReturn(mockUser)
@@ -51,15 +51,15 @@ class UserDetailViewModelTest {
         val state = viewModel.uiState.value
         assertFalse(state.isLoading)
         assertNull(state.error)
-        assertEquals("Era Schmeler", state.user?.name)
+        assertEquals("Sonia Zulauf", state.user?.name)
     }
 
     @Test
     fun `loadUserDetail updates uiState with null when user not found`() = runTest {
         // Repository returns null if user is not found
-        whenever(repository.getUserById("999")).thenReturn(null)
+        whenever(repository.getUserById("100")).thenReturn(null)
 
-        viewModel.loadUser("999")
+        viewModel.loadUser("100")
         dispatcher.scheduler.advanceUntilIdle()
 
         val state = viewModel.uiState.value
@@ -70,7 +70,7 @@ class UserDetailViewModelTest {
 
     @Test
     fun `loadUserDetail updates uiState with error when repository throws`() = runTest {
-        whenever(repository.getUserById("1")).thenThrow(RuntimeException("Network Down"))
+        whenever(repository.getUserById("1")).thenThrow(RuntimeException("Network Interruption"))
 
         viewModel.loadUser("1")
         dispatcher.scheduler.advanceUntilIdle()
@@ -78,6 +78,6 @@ class UserDetailViewModelTest {
         val state = viewModel.uiState.value
         assertFalse(state.isLoading)
         assertNull(state.user)
-        assertEquals("Network Down", state.error)
+        assertEquals("Network Interruption", state.error)
     }
 }

@@ -1,6 +1,6 @@
 package com.example.anzbankassignment.di
 
-import com.example.anzbankassignment.data.UserApi
+import com.example.anzbankassignment.data.remote.UserApi
 import com.example.anzbankassignment.data.UserRepositoryImpl
 import com.example.anzbankassignment.domain.UserRepository
 import dagger.Binds
