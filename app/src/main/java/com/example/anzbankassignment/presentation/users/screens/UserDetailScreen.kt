@@ -14,6 +14,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
@@ -22,7 +23,9 @@ import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import coil.compose.rememberAsyncImagePainter
+import com.example.anzbankassignment.presentation.users.viewmodel.UserDetailUiState
 import com.example.anzbankassignment.presentation.users.viewmodel.UserDetailViewModel
+
 @Composable
 fun UserDetailScreen(
     userId: String,
@@ -31,9 +34,14 @@ fun UserDetailScreen(
     val state by viewModel.uiState.collectAsState()
     LaunchedEffect(userId) { viewModel.loadUser(userId) }
 
+    UserDetailContent(state = state)
+}
+
+@Composable
+fun UserDetailContent(state: UserDetailUiState) {
     when {
         state.isLoading -> Box(
-            modifier = Modifier.fillMaxSize(),
+            modifier = Modifier.fillMaxSize().testTag("LoadingIndicator"),
             contentAlignment = Alignment.Center
         ) {
             CircularProgressIndicator()
@@ -44,12 +52,13 @@ fun UserDetailScreen(
             Column(
                 modifier = Modifier
                     .fillMaxSize()
-                    .padding(16.dp),
+                    .padding(16.dp)
+                    .testTag("UserDetailContent"),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Image(
-                    painter = rememberAsyncImagePainter(user?.photo),
-                    contentDescription = null,
+                    painter = rememberAsyncImagePainter(user.photo),
+                    contentDescription = "User Photo",
                     modifier = Modifier
                         .size(120.dp)
                         .padding(8.dp)
@@ -61,27 +70,27 @@ fun UserDetailScreen(
                         .clip(RoundedCornerShape(8.dp))
                 )
                 Spacer(modifier = Modifier.height(16.dp))
-                UserDetailRow(text = "Name: ", value = user?.name)
-                UserDetailRow(text = "Email: ", value = user?.email)
-                UserDetailRow(text = "Company:  ", value = user?.company)
-                UserDetailRow(text = "Username: ", value = user?.username)
-                UserDetailRow(text = "Phone: ", value = user?.phone)
+                UserDetailRow(text = "Name", value = user.name)
+                UserDetailRow(text = "Email", value = user.email)
+                UserDetailRow(text = "Company", value = user.company)
+                UserDetailRow(text = "Username", value = user.username)
+                UserDetailRow(text = "Phone", value = user.phone)
                 UserDetailRow(
-                    text = "Address: ",
-                    value = "${user?.address}, ${user?.state}, ${user?.country} - ${user?.zip}",
+                    text = "Address",
+                    value = "${user.address}, ${user.state}, ${user.country} - ${user.zip}",
                 )
             }
         }
 
         state.error != null -> Box(
-            modifier = Modifier.fillMaxSize(),
+            modifier = Modifier.fillMaxSize().testTag("ErrorBox"),
             contentAlignment = Alignment.Center
         ) {
             Text("Error: ${state.error}")
         }
 
         else -> Box(
-            modifier = Modifier.fillMaxSize(),
+            modifier = Modifier.fillMaxSize().testTag("EmptyBox"),
             contentAlignment = Alignment.Center
         ) {
             Text("User not found")
@@ -102,5 +111,6 @@ fun UserDetailRow(text: String, value: String?) {
         modifier = Modifier
             .fillMaxWidth() // Required for TextAlign.Center to work
             .padding(vertical = 2.dp)
+            .testTag("UserDetailRow_$text")
     )
 }
