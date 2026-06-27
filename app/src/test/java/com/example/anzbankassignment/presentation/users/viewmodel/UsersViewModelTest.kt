@@ -1,16 +1,12 @@
-package com.example.anzbankassignment
+package com.example.anzbankassignment.presentation.users.viewmodel
 
 import com.example.anzbankassignment.data.User
 import com.example.anzbankassignment.domain.UserRepository
-import com.example.anzbankassignment.presentation.users.viewmodel.UsersViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.test.StandardTestDispatcher
 import kotlinx.coroutines.test.runTest
 import kotlinx.coroutines.test.setMain
-import org.junit.Assert.assertEquals
-import org.junit.Assert.assertFalse
-import org.junit.Assert.assertNull
-import org.junit.Assert.assertTrue
+import org.junit.Assert
 import org.junit.Before
 import org.junit.Test
 import org.mockito.kotlin.mock
@@ -53,10 +49,10 @@ class UsersViewModelTest {
         dispatcher.scheduler.advanceUntilIdle()
 
         val state = viewModel.uiState.value
-        assertFalse(state.isLoading)
-        assertEquals(1, state.users.size)
-        assertEquals("Sonia Zulauf", state.users.first().name)
-        assertNull(state.error)
+        Assert.assertFalse(state.isLoading)
+        Assert.assertEquals(1, state.users.size)
+        Assert.assertEquals("Sonia Zulauf", state.users.first().name)
+        Assert.assertNull(state.error)
     }
 
     @Test
@@ -67,7 +63,7 @@ class UsersViewModelTest {
         dispatcher.scheduler.advanceUntilIdle()
 
         val state = viewModel.uiState.value
-        assertFalse(state.isLoading)
-        assertTrue(state.error!!.contains("Network Interruption"))
+        Assert.assertFalse(state.isLoading)
+        Assert.assertTrue(state.error!!.contains("Network Interruption"))
     }
 }

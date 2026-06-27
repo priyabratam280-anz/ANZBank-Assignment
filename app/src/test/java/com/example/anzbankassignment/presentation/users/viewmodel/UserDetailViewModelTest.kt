@@ -1,18 +1,16 @@
-package com.example.anzbankassignment
+package com.example.anzbankassignment.presentation.users.viewmodel
 
 import com.example.anzbankassignment.data.User
 import com.example.anzbankassignment.domain.UserRepository
-import com.example.anzbankassignment.presentation.users.viewmodel.UserDetailViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.test.StandardTestDispatcher
 import kotlinx.coroutines.test.runTest
 import kotlinx.coroutines.test.setMain
-import org.junit.Assert.*
+import org.junit.Assert
 import org.junit.Before
 import org.junit.Test
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.whenever
-
 
 class UserDetailViewModelTest {
 
@@ -49,9 +47,9 @@ class UserDetailViewModelTest {
         dispatcher.scheduler.advanceUntilIdle()
 
         val state = viewModel.uiState.value
-        assertFalse(state.isLoading)
-        assertNull(state.error)
-        assertEquals("Sonia Zulauf", state.user?.name)
+        Assert.assertFalse(state.isLoading)
+        Assert.assertNull(state.error)
+        Assert.assertEquals("Sonia Zulauf", state.user?.name)
     }
 
     @Test
@@ -63,9 +61,9 @@ class UserDetailViewModelTest {
         dispatcher.scheduler.advanceUntilIdle()
 
         val state = viewModel.uiState.value
-        assertFalse(state.isLoading)
-        assertNull(state.user)
-        assertNull(state.error) // Since ViewModel doesn't set error for null user
+        Assert.assertFalse(state.isLoading)
+        Assert.assertNull(state.user)
+        Assert.assertNull(state.error) // Since ViewModel doesn't set error for null user
     }
 
     @Test
@@ -76,8 +74,8 @@ class UserDetailViewModelTest {
         dispatcher.scheduler.advanceUntilIdle()
 
         val state = viewModel.uiState.value
-        assertFalse(state.isLoading)
-        assertNull(state.user)
-        assertEquals("Network Interruption", state.error)
+        Assert.assertFalse(state.isLoading)
+        Assert.assertNull(state.user)
+        Assert.assertEquals("Network Interruption", state.error)
     }
 }

@@ -1,10 +1,8 @@
-package com.example.anzbankassignment
+package com.example.anzbankassignment.data
 
 import com.example.anzbankassignment.data.remote.UserApi
-import com.example.anzbankassignment.data.UserDto
-import com.example.anzbankassignment.data.UserRepositoryImpl
 import kotlinx.coroutines.test.runTest
-import org.junit.Assert.assertEquals
+import org.junit.Assert
 import org.junit.Before
 import org.junit.Test
 import org.mockito.kotlin.mock
@@ -44,9 +42,9 @@ class UserRepositoryImplTest {
 
         val users = repository.fetchUsers()
 
-        assertEquals(1, users.size)
-        assertEquals("Sonia Zulauf", users.first().name)
-        assertEquals("Zimbabwe", users.first().country)
+        Assert.assertEquals(1, users.size)
+        Assert.assertEquals("Sonia Zulauf", users.first().name)
+        Assert.assertEquals("Zimbabwe", users.first().country)
     }
 
     @Test(expected = Exception::class)
