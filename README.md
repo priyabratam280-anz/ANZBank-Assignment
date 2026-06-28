@@ -51,6 +51,7 @@ It showcases:
 ├─ domain
 
     │ └─ UserRepository.kt
+    │ └─ User.kt
 
 ├─ di
 
