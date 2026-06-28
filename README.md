@@ -128,7 +128,7 @@ Dependency Injection
 
 - [ ] Simple error handling for null users or network failures.
 
- 6 - Demo Video - Screen Shot
+ 6 - Demo Video And Screen Shot added in project
 
 - [ ] Folder Path - https://github.com/priyabratam280-anz/ANZBank-Assignment/tree/master/ScreenShotAndVideo
 
