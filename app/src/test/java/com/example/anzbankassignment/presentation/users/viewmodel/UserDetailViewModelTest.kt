@@ -1,6 +1,6 @@
 package com.example.anzbankassignment.presentation.users.viewmodel
 
-import com.example.anzbankassignment.data.User
+import com.example.anzbankassignment.domain.User
 import com.example.anzbankassignment.domain.UserRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
